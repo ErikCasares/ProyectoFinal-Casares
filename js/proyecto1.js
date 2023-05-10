@@ -29,6 +29,7 @@ class plan_de_ahorro{
         }
         else{
             console.log("no ha ingresado numeros")
+            alert("para calcular se tienen que ingresar numeros")
         }
     }
     get_porcentaje(){
@@ -40,6 +41,7 @@ class plan_de_ahorro{
             let porcentaje_de_sueldo = (this.guardar / this.sueldo) * 100 
             console.log("no es posible guardar mas que tu ingreso mensual, pensa en alcanzar la meta en un periodo mayor de tiempo")
         }
+        else{"error"}
     }
 
 
