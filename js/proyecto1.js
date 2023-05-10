@@ -34,8 +34,7 @@ class plan_de_ahorro{
     get_porcentaje(){
         if(this.guardar < this.sueldo){
             let porcentaje_de_sueldo = (this.guardar / this.sueldo) * 100 
-            console.log("para esto deberias guardar el",porcentaje_de_sueldo,"% de tu sueldo por mes")
-            alert("para esto deberias guardar el",porcentaje_de_sueldo,"% de tu sueldo por mes")
+            console.log("para esto deberias guardar el",porcentaje_de_sueldo,"% de tu ingreso por mes")
         }
         else if(this.guardar > this.sueldo){
             let porcentaje_de_sueldo = (this.guardar / this.sueldo) * 100 
