@@ -35,6 +35,7 @@ class plan_de_ahorro{
         if(this.guardar < this.sueldo){
             let porcentaje_de_sueldo = (this.guardar / this.sueldo) * 100 
             console.log("para esto deberias guardar el",porcentaje_de_sueldo,"% de tu sueldo por mes")
+            alert("para esto deberias guardar el",porcentaje_de_sueldo,"% de tu sueldo por mes")
         }
         else if(this.guardar > this.sueldo){
             let porcentaje_de_sueldo = (this.guardar / this.sueldo) * 100 
@@ -54,5 +55,5 @@ while(reinicio === "si"){
     plan_1.get_porcentaje();
     reinicio = prompt("queres volver a hacer un plan?")
 }
-
+alert("Saliste del Sistema")
 console.log("Gracias por utilizar nuestro sistema")

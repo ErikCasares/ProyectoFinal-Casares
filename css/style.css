@@ -4,10 +4,27 @@
 }
 
 body{
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
+div{color: rgb(240, 182, 131);
+    border-style: double;
 
+    margin: 300px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
 h1{
-    background-color: peachpuff;
+    text-align: center;
+    background-color: rgb(240, 182, 131);
     color: aliceblue;
 }
