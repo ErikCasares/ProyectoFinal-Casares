@@ -263,26 +263,38 @@ function get_otras_opciones() {
     otras_opciones = document.createElement("div");
     if (ahorro_1 > 1 && meses_1 > 1 && sueldo_1 > 1) {
         otras_opciones.innerHTML = `
+    <div>
     <p>En Tres Meses</p>
     <p>Deberias guardar $${Math.ceil(opcion_3_meses)} por mes</p>
     <p>${tres_meses}</p>
+    </div>
 
+    <div>
     <p>En Seis Meses</p>
     <p>Deberias guardar $${Math.ceil(opcion_6_meses)} por mes</p>
     <p>${seis_meses}</p>
+    </div>
 
+    <div>
     <p>En Nueve Meses</p>
     <p>Deberias guardar $${Math.ceil(opcion_9_meses)} por mes</p>
     <p>${nueve_meses}</p>
+    </div>
 
+    <div>
     <p>En Un Año</p>
     <p>Deberias guardar $${Math.ceil(opcion_ano)} por mes</p>
     <p>${un_ano}</p>
-    
+    </div>
+
+    <div>
     <p>En Dos Años</p>
     <p>Deberias guardar $${Math.ceil(opcion_2_anos)} por mes</p>
-    <p>${dos_ano}</p>`
-        exponer_otras_opciones.append(otras_opciones);
+    <p>${dos_ano}</p>
+    </div>`
+    
+    
+    exponer_otras_opciones.append(otras_opciones);
         console.log(" ")
     } else {
         otras_opciones.innerHTML = `

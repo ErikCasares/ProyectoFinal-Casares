@@ -7,7 +7,9 @@
 body {
     background-image: url();
 }
-
+p{
+    font-weight: bold;
+}
 .input{
     display: grid;
     align-items: center;
