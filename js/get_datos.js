@@ -1,3 +1,11 @@
+
+// ESTE JS SOLO LO USE PARA PROBAR CODIGOS
+//NO ES UTIL AL PROYECTO
+
+
+
+
+
 let ahorro = document.getElementById("ahorro")
 let meses = document.getElementById("meses")
 let sueldo = document.getElementById("sueldo")

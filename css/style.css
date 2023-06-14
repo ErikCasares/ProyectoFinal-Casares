@@ -27,6 +27,12 @@ input{
 #historial{
     color: red;
 }
+
+.calcular{
+    text-decoration: none;
+    color: white;
+
+}
 .cuadro{
     display: flex;
     justify-content: center;
