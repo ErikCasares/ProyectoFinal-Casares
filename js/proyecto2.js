@@ -1,11 +1,13 @@
-let lista_ahorros = [{"ahorro": "0",
-"meses": "0",
-"sueldo": "0"}];
+let lista_ahorros = [{
+    "ahorro": "0",
+    "meses": "0",
+    "sueldo": "0"
+}];
 let lista_JSON = JSON.stringify(lista_ahorros);
 let lista_historial = localStorage.getItem("historial")
 lista_ahorros = JSON.parse(lista_historial)
 localStorage.setItem("historial", lista_JSON)
-let historial 
+let historial
 let ahorro_1 = "0"
 let meses_1 = "0"
 let sueldo_1 = "0"
@@ -35,15 +37,16 @@ function mostrar_posicion(posicion) {
                                 <p>${data.main.temp}°  </p>
                                 <p>Clima:${data.weather[0].description}</p>
                                 <p>sensacion termica ${data.main.feels_like}°</p>`
-                                if (data.weather[0].description = "cielo claro") {
-                                    document.getElementById('weather').style.backgroundImage = "url(https://thumbs.gfycat.com/ConsiderateAlienatedCollardlizard-size_restricted.gif)"}
-                                else if (data.weather[0].description = "nubes") {
-                                    document.querySelector('.mweather').style.style.backgroundImage = "url(https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-82716681/82716681.jpg)"}
-                                else if (data.weather[0].description = "lluvia") {
-                                    document.querySelector('.mweather').style.style.backgroundImage = "url(https://i.pinimg.com/originals/0e/28/cb/0e28cb7d7cf948b76a8219f3870d9470.gif)"}
-                                
-                            })
-                            
+            if (data.weather[0].description = "cielo claro") {
+                document.getElementById('weather').style.backgroundImage = "url(https://thumbs.gfycat.com/ConsiderateAlienatedCollardlizard-size_restricted.gif)"
+            } else if (data.weather[0].description = "nubes") {
+                document.querySelector('.mweather').style.style.backgroundImage = "url(https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-82716681/82716681.jpg)"
+            } else if (data.weather[0].description = "lluvia") {
+                document.querySelector('.mweather').style.style.backgroundImage = "url(https://i.pinimg.com/originals/0e/28/cb/0e28cb7d7cf948b76a8219f3870d9470.gif)"
+            }
+
+        })
+
 }
 
 
@@ -55,15 +58,14 @@ navigator.geolocation.getCurrentPosition(mostrar_posicion);
 
 if (localStorage.length >= 1) {
     for (let consulta of lista_ahorros) {
-        if (consulta.ahorro>= 1 && consulta.meses>1 && consulta.sueldo>1) {
-        historial = document.createElement("div");
-        historial.innerHTML = `<p>Querias ahorrar $${consulta.ahorro}</p>
+        if (consulta.ahorro >= 1 && consulta.meses > 1 && consulta.sueldo > 1) {
+            historial = document.createElement("div");
+            historial.innerHTML = `<p>Querias ahorrar $${consulta.ahorro}</p>
                         <p>contabas con un ingreso de $${consulta.sueldo}</p>
                         <p>querias cumplirlo en ${consulta.meses} meses</p>`
-        exponer_historial.append(historial);
+            exponer_historial.append(historial);
+        } else {}
     }
-    else{}
-}
 }
 
 
@@ -77,7 +79,7 @@ class plan_de_ahorro {
         let calcular = document.getElementById("calcular");
         let borrar_historial = document.getElementById("borrar_historial")
         this.guardar = guardar
-        
+
         sueldo = parseInt(sueldo)
         meses = parseInt(meses)
         guardar = parseInt(guardar)
@@ -192,108 +194,108 @@ function get_otras_opciones() {
 
 
 
-if(typeof sueldo_1 === "number"){
-    console.log("vabien")
+    if (typeof sueldo_1 === "number") {
+        console.log("vabien")
 
-    sueldo_1 = parseInt(sueldo_1)
-    meses_1 = parseInt(meses_1)
-    ahorro_1 = parseInt(ahorro_1)
+        sueldo_1 = parseInt(sueldo_1)
+        meses_1 = parseInt(meses_1)
+        ahorro_1 = parseInt(ahorro_1)
 
-    function tresMeses(num) {
+        function tresMeses(num) {
 
-        return num / 3
-    }
+            return num / 3
+        }
 
-    function seisMeses(num) {
+        function seisMeses(num) {
 
-        return num / 6
-    }
+            return num / 6
+        }
 
-    function nueveMeses(num) {
+        function nueveMeses(num) {
 
-        return num / 9
-    }
+            return num / 9
+        }
 
-    function unAno(num) {
+        function unAno(num) {
 
-        return num / 12
-    }
+            return num / 12
+        }
 
-    function dosAno(num) {
+        function dosAno(num) {
 
-        return num / 24
-    }
+            return num / 24
+        }
 
-    let opcion_3_meses = tresMeses(ahorro_1);
-    let opcion_6_meses = seisMeses(ahorro_1);
-    let opcion_9_meses = nueveMeses(ahorro_1);
-    let opcion_ano = unAno(ahorro_1);
-    let opcion_2_anos = dosAno(ahorro_1);
-    console.log(">>Otras opciones para llegar a la meta de ahorro<<")
-    Math.round(opcion_3_meses)
+        let opcion_3_meses = tresMeses(ahorro_1);
+        let opcion_6_meses = seisMeses(ahorro_1);
+        let opcion_9_meses = nueveMeses(ahorro_1);
+        let opcion_ano = unAno(ahorro_1);
+        let opcion_2_anos = dosAno(ahorro_1);
+        console.log(">>Otras opciones para llegar a la meta de ahorro<<")
+        Math.round(opcion_3_meses)
 
-    if ((opcion_3_meses / sueldo_1) * 100 < 40) {
-        tres_meses = "se puede considerar un ahorro posible";
+        if ((opcion_3_meses / sueldo_1) * 100 < 40) {
+            tres_meses = "se puede considerar un ahorro posible";
 
-    } else if (opcion_3_meses < sueldo_1) {
-        tres_meses = "se puede considerar un ahorro dificil";
-    } else {
-        tres_meses = "se puede considerar un ahorro imposible";
-    }
-    console.log(opcion_3_meses)
-
-
-
-    if ((opcion_6_meses / sueldo_1) * 100 < 40) {
-        seis_meses = "se puede considerar un ahorro posible"
-    } else if (opcion_6_meses < sueldo_1) {
-        seis_meses = "se puede considerar un ahorro dificil"
-    } else {
-        seis_meses = "se puede considerar un ahorro imposible"
-    }
+        } else if (opcion_3_meses < sueldo_1) {
+            tres_meses = "se puede considerar un ahorro dificil";
+        } else {
+            tres_meses = "se puede considerar un ahorro imposible";
+        }
+        console.log(opcion_3_meses)
 
 
 
-
-
-
-    if ((opcion_9_meses / sueldo_1) * 100 < 40) {
-        nueve_meses = "se puede considerar un ahorro posible"
-    } else if (opcion_9_meses < sueldo_1) {
-        nueve_meses = "se puede considerar un ahorro dificil"
-    } else {
-        nueve_meses = "se puede considerar un ahorro imposible"
-    }
+        if ((opcion_6_meses / sueldo_1) * 100 < 40) {
+            seis_meses = "se puede considerar un ahorro posible"
+        } else if (opcion_6_meses < sueldo_1) {
+            seis_meses = "se puede considerar un ahorro dificil"
+        } else {
+            seis_meses = "se puede considerar un ahorro imposible"
+        }
 
 
 
 
 
 
-    if ((opcion_ano / sueldo_1) * 100 < 40) {
-        un_ano = "se puede considerar un ahorro posible"
-    } else if (opcion_ano < sueldo_1) {
-        un_ano = "se puede considerar un ahorro dificil"
-    } else {
-        un_ano = "se puede considerar un ahorro imposible"
-    }
+        if ((opcion_9_meses / sueldo_1) * 100 < 40) {
+            nueve_meses = "se puede considerar un ahorro posible"
+        } else if (opcion_9_meses < sueldo_1) {
+            nueve_meses = "se puede considerar un ahorro dificil"
+        } else {
+            nueve_meses = "se puede considerar un ahorro imposible"
+        }
 
 
 
 
 
-    if ((opcion_2_anos / sueldo_1) * 100 < 40) {
-        dos_ano = "se puede considerar un ahorro posible"
-    } else if (opcion_2_anos < sueldo_1) {
-        dos_ano = "se puede considerar un ahorro dificil"
-    } else {
-        dos_ano = "se puede considerar un ahorro imposible"
-    }
-    let exponer_otras_opciones = document.getElementById("exponer_otras_opciones");
-    exponer_otras_opciones.innerHTML = "";
-    otras_opciones = document.createElement("div");
-    if (ahorro_1 > 1 && meses_1 > 1 && sueldo_1 > 1) {
-        otras_opciones.innerHTML = `
+
+        if ((opcion_ano / sueldo_1) * 100 < 40) {
+            un_ano = "se puede considerar un ahorro posible"
+        } else if (opcion_ano < sueldo_1) {
+            un_ano = "se puede considerar un ahorro dificil"
+        } else {
+            un_ano = "se puede considerar un ahorro imposible"
+        }
+
+
+
+
+
+        if ((opcion_2_anos / sueldo_1) * 100 < 40) {
+            dos_ano = "se puede considerar un ahorro posible"
+        } else if (opcion_2_anos < sueldo_1) {
+            dos_ano = "se puede considerar un ahorro dificil"
+        } else {
+            dos_ano = "se puede considerar un ahorro imposible"
+        }
+        let exponer_otras_opciones = document.getElementById("exponer_otras_opciones");
+        exponer_otras_opciones.innerHTML = "";
+        otras_opciones = document.createElement("div");
+        if (ahorro_1 > 1 && meses_1 > 1 && sueldo_1 > 1) {
+            otras_opciones.innerHTML = `
     <div>
     <p>En Tres Meses</p>
     <p>Deberias guardar $${Math.ceil(opcion_3_meses)} por mes</p>
@@ -325,16 +327,15 @@ if(typeof sueldo_1 === "number"){
     </div>`
 
 
-        exponer_otras_opciones.append(otras_opciones);
-        console.log(" ")
-    } else {
-        otras_opciones.innerHTML = `
+            exponer_otras_opciones.append(otras_opciones);
+            console.log(" ")
+        } else {
+            otras_opciones.innerHTML = `
         `
-        exponer_otras_opciones.append(otras_opciones);
-        console.log(" ")
-    }
-}
-else[]
+            exponer_otras_opciones.append(otras_opciones);
+            console.log(" ")
+        }
+    } else []
 }
 
 
@@ -399,27 +400,29 @@ function push() {
     exponer_historial.innerHTML = "";
 
     for (let consulta of lista_ahorros) {
-        if (consulta.ahorro>= 1 && consulta.meses>1 && consulta.sueldo>1){
-        historial = document.createElement("div");
-        historial.innerHTML = `<p>Querias ahorrar $${consulta.ahorro}</p>
+        if (consulta.ahorro >= 1 && consulta.meses > 1 && consulta.sueldo > 1) {
+            historial = document.createElement("div");
+            historial.innerHTML = `<p>Querias ahorrar $${consulta.ahorro}</p>
                             <p>contabas con un ingreso de $${consulta.sueldo}</p>
                             <p>querias cumplirlo en ${consulta.meses} meses</p>`
-        exponer_historial.append(historial);
-        }
-        else{}
+            exponer_historial.append(historial);
+        } else {}
     }
 
 
 }
+
 function borrar_h() {
 
     console.log(lista_JSON);
     console.log(lista_ahorros);
     localStorage.removeItem("historial");
     localStorage.setItem("historial", "")
-    lista_ahorros = [{"ahorro": "",
+    lista_ahorros = [{
+        "ahorro": "",
         "meses": "",
-        "sueldo": ""}]
+        "sueldo": ""
+    }]
     lista_JSON = ["0"]
     let exponer_historial = document.getElementById("exponer_historial");
     exponer_historial.innerHTML = "";
