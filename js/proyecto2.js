@@ -1,9 +1,11 @@
-let lista_ahorros = [];
+let lista_ahorros = [{"ahorro": "0",
+"meses": "0",
+"sueldo": "0"}];
 let lista_JSON = JSON.stringify(lista_ahorros);
 let lista_historial = localStorage.getItem("historial")
 lista_ahorros = JSON.parse(lista_historial)
 localStorage.setItem("historial", lista_JSON)
-
+let historial 
 let ahorro_1 = "0"
 let meses_1 = "0"
 let sueldo_1 = "0"
@@ -53,12 +55,15 @@ navigator.geolocation.getCurrentPosition(mostrar_posicion);
 
 if (localStorage.length >= 1) {
     for (let consulta of lista_ahorros) {
+        if (consulta.ahorro>= 1 && consulta.meses>1 && consulta.sueldo>1) {
         historial = document.createElement("div");
         historial.innerHTML = `<p>Querias ahorrar $${consulta.ahorro}</p>
                         <p>contabas con un ingreso de $${consulta.sueldo}</p>
                         <p>querias cumplirlo en ${consulta.meses} meses</p>`
         exponer_historial.append(historial);
     }
+    else{}
+}
 }
 
 
@@ -72,7 +77,7 @@ class plan_de_ahorro {
         let calcular = document.getElementById("calcular");
         let borrar_historial = document.getElementById("borrar_historial")
         this.guardar = guardar
-
+        
         sueldo = parseInt(sueldo)
         meses = parseInt(meses)
         guardar = parseInt(guardar)
@@ -81,19 +86,7 @@ class plan_de_ahorro {
 
 
 
-function borrar_h() {
-    localStorage.removeItem("historial");
-    let lista_ahorros = []
-    let historial
-    let exponer_historial = document.getElementById("exponer_historial");
-    exponer_historial.innerHTML = "";
-    historial = document.createElement("div");
-    historial.innerHTML = `<p></p>`
-    exponer_historial.append(historial);
-    let lista_historial = localStorage.getItem("historial")
-    lista_ahorros = JSON.parse(lista_historial)
-    localStorage.setItem("historial", lista_JSON)
-}
+
 
 function get_datos(e) {
     ahorro_1 = ahorro.value
@@ -199,6 +192,8 @@ function get_otras_opciones() {
 
 
 
+if(typeof sueldo_1 === "number"){
+    console.log("vabien")
 
     sueldo_1 = parseInt(sueldo_1)
     meses_1 = parseInt(meses_1)
@@ -339,6 +334,8 @@ function get_otras_opciones() {
         console.log(" ")
     }
 }
+else[]
+}
 
 
 let plan_1 = new plan_de_ahorro(document.getElementById("ahorro"), document.getElementById("sueldo"), document.getElementById("meses"));
@@ -398,18 +395,42 @@ function push() {
     localStorage.setItem("historial", lista_JSON);
     console.log(lista_ahorros);
 
-    let historial
-
     let exponer_historial = document.getElementById("exponer_historial");
     exponer_historial.innerHTML = "";
 
     for (let consulta of lista_ahorros) {
+        if (consulta.ahorro>= 1 && consulta.meses>1 && consulta.sueldo>1){
         historial = document.createElement("div");
         historial.innerHTML = `<p>Querias ahorrar $${consulta.ahorro}</p>
                             <p>contabas con un ingreso de $${consulta.sueldo}</p>
                             <p>querias cumplirlo en ${consulta.meses} meses</p>`
         exponer_historial.append(historial);
+        }
+        else{}
     }
 
 
+}
+function borrar_h() {
+
+    console.log(lista_JSON);
+    console.log(lista_ahorros);
+    localStorage.removeItem("historial");
+    localStorage.setItem("historial", "")
+    lista_ahorros = [{"ahorro": "",
+        "meses": "",
+        "sueldo": ""}]
+    lista_JSON = ["0"]
+    let exponer_historial = document.getElementById("exponer_historial");
+    exponer_historial.innerHTML = "";
+    historial = document.createElement("div");
+    historial.innerHTML = `<p></p>`
+    exponer_historial.append(historial);
+    lista_JSON = JSON.stringify(lista_ahorros);
+    lista_historial = localStorage.getItem("historial")
+    console.log(lista_JSON);
+    console.log(lista_ahorros);
+    return lista_ahorros
+    return lista_JSON
+    return lista_historial
 }
