@@ -12,9 +12,44 @@ let otras_opciones = "0"
 let guardar = 0
 
 
+
+
+
 let ahorro = document.getElementById("ahorro")
 let meses = document.getElementById("meses")
 let sueldo = document.getElementById("sueldo")
+
+function mostrar_posicion(posicion) {
+
+    let lat = posicion.coords.latitude;
+    let long = posicion.coords.longitude;
+    let key = "1d4b53be0e83c76a46ed22be372fe440";
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric&lang=es`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            weather.innerHTML = `<p>Clima de ${data.name}</p>
+                                <p>${data.main.temp}°  </p>
+                                <p>Clima:${data.weather[0].description}</p>
+                                <p>sensacion termica ${data.main.feels_like}°</p>`
+                                if (data.weather[0].description = "cielo claro") {
+                                    document.getElementById('weather').style.backgroundImage = "url(https://thumbs.gfycat.com/ConsiderateAlienatedCollardlizard-size_restricted.gif)"}
+                                else if (data.weather[0].description = "nubes") {
+                                    document.querySelector('.mweather').style.style.backgroundImage = "url(https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-82716681/82716681.jpg)"}
+                                else if (data.weather[0].description = "lluvia") {
+                                    document.querySelector('.mweather').style.style.backgroundImage = "url(https://i.pinimg.com/originals/0e/28/cb/0e28cb7d7cf948b76a8219f3870d9470.gif)"}
+                                
+                            })
+                            
+}
+
+
+
+navigator.geolocation.getCurrentPosition(mostrar_posicion);
+
+
+
 
 if (localStorage.length >= 1) {
     for (let consulta of lista_ahorros) {
@@ -25,7 +60,6 @@ if (localStorage.length >= 1) {
         exponer_historial.append(historial);
     }
 }
-
 
 
 class plan_de_ahorro {
@@ -49,7 +83,7 @@ class plan_de_ahorro {
 
 function borrar_h() {
     localStorage.removeItem("historial");
-    lista_ahorros = []
+    let lista_ahorros = []
     let historial
     let exponer_historial = document.getElementById("exponer_historial");
     exponer_historial.innerHTML = "";
@@ -57,8 +91,8 @@ function borrar_h() {
     historial.innerHTML = `<p></p>`
     exponer_historial.append(historial);
     let lista_historial = localStorage.getItem("historial")
-lista_ahorros = JSON.parse(lista_historial)
-localStorage.setItem("historial", lista_JSON)
+    lista_ahorros = JSON.parse(lista_historial)
+    localStorage.setItem("historial", lista_JSON)
 }
 
 function get_datos(e) {
@@ -82,6 +116,7 @@ function get_datos(e) {
         meses.value = ""
         sueldo.value = ""
     } else {
+
         datos.innerHTML = `<h2>Datos Del calculo</h2>
         <p>DATOS INCORRECTOS</p>`
         exponer_datos.append(datos);
@@ -89,6 +124,7 @@ function get_datos(e) {
         ahorro.value = ""
         meses.value = ""
         sueldo.value = ""
+        swal("ERROR", "Para calcular debes ingresar datos", "error");
     }
 
 }
@@ -292,13 +328,13 @@ function get_otras_opciones() {
     <p>Deberias guardar $${Math.ceil(opcion_2_anos)} por mes</p>
     <p>${dos_ano}</p>
     </div>`
-    
-    
-    exponer_otras_opciones.append(otras_opciones);
+
+
+        exponer_otras_opciones.append(otras_opciones);
         console.log(" ")
     } else {
         otras_opciones.innerHTML = `
-        <p>DATOS INCORRECTOS</p>`
+        `
         exponer_otras_opciones.append(otras_opciones);
         console.log(" ")
     }
@@ -311,8 +347,42 @@ calcular.addEventListener("click", get_calculo);
 calcular.addEventListener("click", get_porcentaje);
 calcular.addEventListener("click", get_otras_opciones);
 calcular.addEventListener("click", push);
-borrar_historial.addEventListener("click", borrar_h)
+borrar_historial.addEventListener("click", preguntar_antes)
 
+
+
+function preguntar_antes() {
+    swal({
+            title: "Estas seguro?",
+            text: "una vez borrado ya no hay vuelta atras",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                borrar_h()
+                swal("Historial Borrado con exito ", {
+                    icon: "success",
+                });
+            } else {
+                swal("historial salvado");
+            }
+        });
+}
+
+//QUE FUNCIONE TODO CON ENTER EN EL ULTIMO INPUT 
+sueldo.addEventListener("keydown", function (e) {
+
+    console.log(e.key);
+    if (e.key == "Enter") {
+        get_datos();
+        get_calculo();
+        get_porcentaje();
+        get_otras_opciones();
+        push();
+    }
+})
 
 function push() {
     let consulta = {
@@ -324,9 +394,9 @@ function push() {
         lista_ahorros.push(consulta);
     } else {}
     lista_JSON = JSON.stringify(lista_ahorros);
-    console.log(lista_JSON)
-    localStorage.setItem("historial", lista_JSON, )
-    console.log(lista_ahorros)
+    console.log(lista_JSON);
+    localStorage.setItem("historial", lista_JSON);
+    console.log(lista_ahorros);
 
     let historial
 
