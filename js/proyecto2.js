@@ -5,7 +5,7 @@ let lista_ahorros = [{
 }];
 let lista_JSON = JSON.stringify(lista_ahorros);
 let lista_historial = localStorage.getItem("historial")
-lista_ahorros = JSON.parse(lista_historial)
+
 localStorage.setItem("historial", lista_JSON)
 let historial
 let ahorro_1 = "0"
