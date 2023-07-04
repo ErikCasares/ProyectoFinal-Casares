@@ -426,11 +426,9 @@ function push() {
             exponer_historial.append(historial);
         } else {}
     }
-    else{}
 }
 
 
-}
 
 function borrar_h() {
 
