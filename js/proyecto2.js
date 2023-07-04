@@ -85,12 +85,15 @@ class plan_de_ahorro {
         guardar = parseInt(guardar)
     }
 }
+
 function borrar_h() {
     localStorage.removeItem("historial");
     localStorage.setItem("historial", "")
-    lista_ahorros = [{"ahorro": "",
+    lista_ahorros = [{
+        "ahorro": "",
         "meses": "",
-        "sueldo": ""}]
+        "sueldo": ""
+    }]
     lista_JSON = ["0"]
     let exponer_historial = document.getElementById("exponer_historial");
     exponer_historial.innerHTML = "";
@@ -215,105 +218,105 @@ function get_otras_opciones() {
 
 
 
-        sueldo_1 = parseInt(sueldo_1)
-        meses_1 = parseInt(meses_1)
-        ahorro_1 = parseInt(ahorro_1)
+    sueldo_1 = parseInt(sueldo_1)
+    meses_1 = parseInt(meses_1)
+    ahorro_1 = parseInt(ahorro_1)
 
-        function tresMeses(num) {
+    function tresMeses(num) {
 
-            return num / 3
-        }
+        return num / 3
+    }
 
-        function seisMeses(num) {
+    function seisMeses(num) {
 
-            return num / 6
-        }
+        return num / 6
+    }
 
-        function nueveMeses(num) {
+    function nueveMeses(num) {
 
-            return num / 9
-        }
+        return num / 9
+    }
 
-        function unAno(num) {
+    function unAno(num) {
 
-            return num / 12
-        }
+        return num / 12
+    }
 
-        function dosAno(num) {
+    function dosAno(num) {
 
-            return num / 24
-        }
+        return num / 24
+    }
 
-        let opcion_3_meses = tresMeses(ahorro_1);
-        let opcion_6_meses = seisMeses(ahorro_1);
-        let opcion_9_meses = nueveMeses(ahorro_1);
-        let opcion_ano = unAno(ahorro_1);
-        let opcion_2_anos = dosAno(ahorro_1);
-        console.log(">>Otras opciones para llegar a la meta de ahorro<<")
-        Math.round(opcion_3_meses)
+    let opcion_3_meses = tresMeses(ahorro_1);
+    let opcion_6_meses = seisMeses(ahorro_1);
+    let opcion_9_meses = nueveMeses(ahorro_1);
+    let opcion_ano = unAno(ahorro_1);
+    let opcion_2_anos = dosAno(ahorro_1);
+    console.log(">>Otras opciones para llegar a la meta de ahorro<<")
+    Math.round(opcion_3_meses)
 
-        if ((opcion_3_meses / sueldo_1) * 100 < 40) {
-            tres_meses = "se puede considerar un ahorro posible";
+    if ((opcion_3_meses / sueldo_1) * 100 < 40) {
+        tres_meses = "se puede considerar un ahorro posible";
 
-        } else if (opcion_3_meses < sueldo_1) {
-            tres_meses = "se puede considerar un ahorro dificil";
-        } else {
-            tres_meses = "se puede considerar un ahorro imposible";
-        }
-        console.log(opcion_3_meses)
-
-
-
-        if ((opcion_6_meses / sueldo_1) * 100 < 40) {
-            seis_meses = "se puede considerar un ahorro posible"
-        } else if (opcion_6_meses < sueldo_1) {
-            seis_meses = "se puede considerar un ahorro dificil"
-        } else {
-            seis_meses = "se puede considerar un ahorro imposible"
-        }
+    } else if (opcion_3_meses < sueldo_1) {
+        tres_meses = "se puede considerar un ahorro dificil";
+    } else {
+        tres_meses = "se puede considerar un ahorro imposible";
+    }
+    console.log(opcion_3_meses)
 
 
 
-
-
-
-        if ((opcion_9_meses / sueldo_1) * 100 < 40) {
-            nueve_meses = "se puede considerar un ahorro posible"
-        } else if (opcion_9_meses < sueldo_1) {
-            nueve_meses = "se puede considerar un ahorro dificil"
-        } else {
-            nueve_meses = "se puede considerar un ahorro imposible"
-        }
+    if ((opcion_6_meses / sueldo_1) * 100 < 40) {
+        seis_meses = "se puede considerar un ahorro posible"
+    } else if (opcion_6_meses < sueldo_1) {
+        seis_meses = "se puede considerar un ahorro dificil"
+    } else {
+        seis_meses = "se puede considerar un ahorro imposible"
+    }
 
 
 
 
 
 
-        if ((opcion_ano / sueldo_1) * 100 < 40) {
-            un_ano = "se puede considerar un ahorro posible"
-        } else if (opcion_ano < sueldo_1) {
-            un_ano = "se puede considerar un ahorro dificil"
-        } else {
-            un_ano = "se puede considerar un ahorro imposible"
-        }
+    if ((opcion_9_meses / sueldo_1) * 100 < 40) {
+        nueve_meses = "se puede considerar un ahorro posible"
+    } else if (opcion_9_meses < sueldo_1) {
+        nueve_meses = "se puede considerar un ahorro dificil"
+    } else {
+        nueve_meses = "se puede considerar un ahorro imposible"
+    }
 
 
 
 
 
-        if ((opcion_2_anos / sueldo_1) * 100 < 40) {
-            dos_ano = "se puede considerar un ahorro posible"
-        } else if (opcion_2_anos < sueldo_1) {
-            dos_ano = "se puede considerar un ahorro dificil"
-        } else {
-            dos_ano = "se puede considerar un ahorro imposible"
-        }
-        let exponer_otras_opciones = document.getElementById("exponer_otras_opciones");
-        exponer_otras_opciones.innerHTML = "";
-        otras_opciones = document.createElement("div");
-        if (ahorro_1 > 1 && meses_1 > 1 && sueldo_1 > 1) {
-            otras_opciones.innerHTML = `
+
+    if ((opcion_ano / sueldo_1) * 100 < 40) {
+        un_ano = "se puede considerar un ahorro posible"
+    } else if (opcion_ano < sueldo_1) {
+        un_ano = "se puede considerar un ahorro dificil"
+    } else {
+        un_ano = "se puede considerar un ahorro imposible"
+    }
+
+
+
+
+
+    if ((opcion_2_anos / sueldo_1) * 100 < 40) {
+        dos_ano = "se puede considerar un ahorro posible"
+    } else if (opcion_2_anos < sueldo_1) {
+        dos_ano = "se puede considerar un ahorro dificil"
+    } else {
+        dos_ano = "se puede considerar un ahorro imposible"
+    }
+    let exponer_otras_opciones = document.getElementById("exponer_otras_opciones");
+    exponer_otras_opciones.innerHTML = "";
+    otras_opciones = document.createElement("div");
+    if (ahorro_1 > 1 && meses_1 > 1 && sueldo_1 > 1) {
+        otras_opciones.innerHTML = `
     <div>
     <p>En Tres Meses</p>
     <p>Deberias guardar $${Math.ceil(opcion_3_meses)} por mes</p>
@@ -345,14 +348,14 @@ function get_otras_opciones() {
     </div>`
 
 
-            exponer_otras_opciones.append(otras_opciones);
-            console.log(" ")
-        } else {
-            otras_opciones.innerHTML = `
+        exponer_otras_opciones.append(otras_opciones);
+        console.log(" ")
+    } else {
+        otras_opciones.innerHTML = `
         `
-            exponer_otras_opciones.append(otras_opciones);
-            console.log(" ")
-        }
+        exponer_otras_opciones.append(otras_opciones);
+        console.log(" ")
+    }
 
 }
 
