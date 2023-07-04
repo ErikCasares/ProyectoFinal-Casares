@@ -194,8 +194,7 @@ function get_otras_opciones() {
 
 
 
-    if (typeof sueldo_1 === "number") {
-        console.log("vabien")
+
 
         sueldo_1 = parseInt(sueldo_1)
         meses_1 = parseInt(meses_1)
@@ -335,7 +334,7 @@ function get_otras_opciones() {
             exponer_otras_opciones.append(otras_opciones);
             console.log(" ")
         }
-    } else []
+
 }
 
 
