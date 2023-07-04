@@ -1,9 +1,11 @@
-let lista_ahorros = [];
+let lista_ahorros = [{"ahorro": "0",
+"meses": "0",
+"sueldo": "0"}];
 let lista_JSON = JSON.stringify(lista_ahorros);
 let lista_historial = localStorage.getItem("historial")
 lista_ahorros = JSON.parse(lista_historial)
 localStorage.setItem("historial", lista_JSON)
-
+let historial 
 let ahorro_1 = "0"
 let meses_1 = "0"
 let sueldo_1 = "0"
@@ -78,7 +80,26 @@ class plan_de_ahorro {
         guardar = parseInt(guardar)
     }
 }
-
+function borrar_h() {
+    localStorage.removeItem("historial");
+    localStorage.setItem("historial", "")
+    lista_ahorros = [{"ahorro": "",
+        "meses": "",
+        "sueldo": ""}]
+    lista_JSON = ["0"]
+    let exponer_historial = document.getElementById("exponer_historial");
+    exponer_historial.innerHTML = "";
+    historial = document.createElement("div");
+    historial.innerHTML = `<p></p>`
+    exponer_historial.append(historial);
+    lista_JSON = JSON.stringify(lista_ahorros);
+    lista_historial = localStorage.getItem("historial")
+    console.log(lista_JSON);
+    console.log(lista_ahorros);
+    return lista_ahorros
+    return lista_JSON
+    return lista_historial
+}
 
 
 function borrar_h() {
@@ -404,12 +425,15 @@ function push() {
     exponer_historial.innerHTML = "";
 
     for (let consulta of lista_ahorros) {
+        if (consulta.ahorro>= 1 && consulta.meses>1 && consulta.sueldo>1){
         historial = document.createElement("div");
         historial.innerHTML = `<p>Querias ahorrar $${consulta.ahorro}</p>
                             <p>contabas con un ingreso de $${consulta.sueldo}</p>
                             <p>querias cumplirlo en ${consulta.meses} meses</p>`
         exponer_historial.append(historial);
     }
+    else{}
+}
 
 
 }
